@@ -33,7 +33,7 @@ umd_fees_pct <- umd_fees |> mutate(pct_change = (`Fall 2026`- `Fall 2021`)/`Fall
 
 Write a few sentences about what you found in those percentages. What's the story here? What questions do you have?
 
-
+Three of the largest percent changes involve student sustainability, the shuttle bus system, and student activities. I believe the story here is whether or not students have noticed an improvement in the shuttle bus system, and maybe more importantly, student sustainability. As a student myself, I wonder what exactly the school has improved upon in the bus system other than making the buses electric. After experiencing a rainstorm last week which resulted in most of the new buses being closed, I wonder if this jump in fees towards these new sustainable bus system is actually serving students. My questions to the school would be why they decided to devote more of the student fees towards the sustainable bus system and if they decided to make this change based on student input. I would ask students if they think that the new bus system worthwhile and if they have noticed that the buses have shut down more often with the new buses. I would then ask students what they think that the UMD fees should contribute the most to. 
 
 
 When you are done, save your work, switch to GitHub Desktop, then add, commit and push your changes to GitHub and submit the URL of the notebook in ELMS.
