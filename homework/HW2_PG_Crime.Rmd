@@ -9,34 +9,35 @@ In this assignment, we will be working with a dataset reporting the number of cr
 You will need to load the tidyverse library
 
 ```{r}
-
+library(tidyverse)
 ```
 
 Then you'll load the data from the web. The URL for the data is: https://raw.githubusercontent.com/dwillis/jour405/refs/heads/main/data/pg_crime_totals_2024.csv. You will create a dataframe called `pg_crime` that contains the data from this URL.
 
 ### Task 2: Load the Data and Describe It
 
-```{r}
+```{r} 
+pg_crime <- read_csv("https://raw.githubusercontent.com/dwillis/jour405/refs/heads/main/data/pg_crime_totals_2024.csv")
 ```
 ### Task 3: Describe the Data
 
 You should examine that dataframe carefully by clicking on it in the Environment tab in RStudio. Write a couple of sentences describing the categories of incidents. From a reporting standpoint, are any of the categories more important than others? Why or why not? Do any of them make the job of summarizing the data more difficult? Why or why not?
 
-ANSWER HERE
+At first glance, it looks like accidents are the most commonly reported crimes in PG county along with auto stolen crimes as the second and accidents with impound being the third most reported. Robbery residential seems to be the least commonly reported crime which I wonder why that is. From a reporting standpoint, I think the category of accidents seems to be the most important as it makes up the most amount of crime which may be due to the fact that accidents can be an umbrella term for many different crimes. The fact that the percentage differences are not shown makes the job of summarizing a little more difficult because data analysts would have to go in and write the code to find the percentages and changes.
 
 ### Task 4: Calculating Averages
 
 Add up the total number of incidents per month for each category using `mutate()`, calling the new column `total_incidents`. Then calculate the average number of incidents per month for each category of crime using the total number of months, calling the new column `average_incidents`. Assign the result to a new dataframe called `pg_crime_averages`.
 
 ```{r}
-
+pg_crime_averages <- pg_crime |> mutate(average = ('Dec'-'Jan')/'Jan' *100)
 ```
 
 ### Task 5: Describe the Averages
 
 Examine the new dataframe, `pg_crime_averages`, by clicking on it in the Environment tab in RStudio. Write a couple of sentences describing the average number of incidents per month for each category. Which categories have the highest average number of incidents per month? Which have the lowest? What does this tell you about the pattern of crime in Prince George's County? Are there categories that you have questions about? Why or why not?
 
-ANSWER HERE
+I couldn't get the code to work without getting an error message but I would assume that the highest averages would be in categories accidents, auto stolen crimes and impounding. the lowest might also be robbery residential due to the fact that it had the lowest reported crime category. This tells me that PG County's largest crime rates are in regards to accidents--which could be because accidents could be an umbrella term for many different ranges of crimes. Therefore, my biggest question is whether accidents is actually an umbrella term and if so, what is the definition of accidents and does it involve other categories in the data with it being an umbrella term?
 
 
 ### Task 6: Testing a Theory
@@ -44,19 +45,20 @@ ANSWER HERE
 One theory about crime is that it is more likely to occur in the summer months. Test this theory by creating three new columns using `mutate()` that calculate the percentage change compared to the average for each category of crime for the months of June, July, and August. Call the new columns `june_change`, `july_change`, and `august_change`. Assign the result to a new dataframe called `summer_crime_averages`.
 
 ```{r}
+summer_crime_averages <- mutate(pct_change (june_change,july_change,august_change))
 ```
 
 ### Task 7: Describe the Summer Crime Averages
 
 Look at the `summer_crime_averages` dataframe by clicking on it in the Environment tab in RStudio. Write a couple of sentences describing the percentage change in the average number of incidents per month for each category of crime for the months of June, July, and August. Do you see any patterns? What does this tell you about the theory that crime is more likely to occur in the summer months?
 
-ANSWER HERE
+I could not get the code to load for the percentages for june, july and august but before I figure out the problem with my code in the next class, I would infer, using the raw data from the pg_crime, that june and july would have more crime than august, with juy having the most crime. This tells me that crime is more likely to happen in the summer months which does go along with most patterns of crime in the U.S. on a national level.
 
 ### Task 8: What's the Story?
 
 Write up a lede and nutgraf of a story focused on the crime data in Prince George's County. It could be from any of the dataframes you've created in this assignment. The lede should be a single sentence that summarizes the most important information in the data. The nutgraf should be a paragraph that provides more context and explains why the data is important.
 
-ANSWER HERE
+Prince George's County experiences high number of accidents in August compared to other summer months. With crime being the most common in the summer months of June, July and August, accident-related crimes hold the most amount of reports than any other crime category. Prince George's County reports that along with accidents, auto-stolen and impounding are the most commonly reported crimes. Residential robberies, on the other hand, remain to be at the lowest end of reported crime. From this data, one would infer that there is a pattern in crime reaching its highest points in the months June, July and August. 
 
 ### Task 9: Save Your Work and Put it on GitHub
 
