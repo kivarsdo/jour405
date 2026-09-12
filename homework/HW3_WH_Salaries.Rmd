@@ -9,6 +9,7 @@ In this assignment, we will be working with a dataset containing information abo
 You will need to load the tidyverse library
 
 ```{r}
+library(tidyverse)
 ```
 
 Then you'll load the data from the web. The URL for the data is: https://raw.githubusercontent.com/dwillis/jour405/refs/heads/main/data/white_house_salaries_2026.csv. You will create a dataframe called `wh_salaries` that contains the data from this URL.
@@ -16,19 +17,21 @@ Then you'll load the data from the web. The URL for the data is: https://raw.git
 ### Task 2: Load the Data and Describe It
 
 ```{r}
+wh_salaries <- read_csv("https://raw.githubusercontent.com/dwillis/jour405/refs/heads/main/data/white_house_salaries_2026.csv")
 ```
 ### Task 3: Describe the Data
 
 You should examine that dataframe carefully by clicking on it in the Environment tab in RStudio. Write a couple of sentences describing the categories of incidents. From a reporting standpoint, what stands out to you about this data? Are there any salary values that will cause problems for analysis?
 
-ANSWER HERE
+What stands out to me about this data is the fact that the highest salary is 197200 and that the lowest salary is 0. From what I can see, the employee, detailee and part-time detailee are the three different kinds of employee categories listed. The part-time detailee category makes it a little confusing for analysis due to the fact that we don't know what part-time entails and if that effects the pay range. I think the salary values with 0 might make it a little difficult to analyze the data because they will most likely be the outlier.
 
 ### Task 4: Calculate the Mean and Median of the Salaries
 
 Write code to calculate the mean and median of the salaries in the dataset using the `summarize()` function. You don't need to make a new dataframe, just display the results.
 
 ```{r}
-
+wh_salaries |> summarize((mean_salary=mean(wh_salaries)(median_salary=median(wh_salaries)))
+          
 ```
 
 ### Task 5: Add in the minimum and maximum salaries
@@ -36,17 +39,17 @@ Write code to calculate the mean and median of the salaries in the dataset using
 Take the code you just wrote and add in the minimum and maximum salaries (the functions for that are `min()` and `max()`). Your results should show four columns: mean_salary, median_salary, min_salary, max_salary.
 
 ```{r}
-
+wh_salaries |> summarize((mean_salary=mean(wh_salaries)(median_salary=median(wh_salaries)(min_salary=min(wh_salaries))(max_salary=max(wh_salaries)))))
 ```
 
 ### Task 6: Describe the Results
 
 Write a couple of sentences describing the results of your analysis. What do the mean and median salaries tell you about the data? What do the minimum and maximum salaries tell you? Are there any outliers in the data?
 
-ANSWER HERE
+I could not get the functions to work for task four and five therefore it is difficult for me to hypothesize what the mean and median would be however I would assume that the full time employees would get the largest pay check in contrast to the part-time detailees. I would also assume just by looking at the salaries that the minimum salary would be 0 and that the highest salary would be 197200. The only outliers in the data would be the employees who earn 0 salary which would most likely skew the data.
 
 ### Task 7: Story Idea
 
 Based on the data, what is your best story idea? What is the next step you would take to develop that story idea?
 
-ANSWER HERE
+Based on the data, the best story idea that I can come up with is the fact that employees like Steven Witkoff and Paula White are not making any salary which poses the question, why are they not getting any money and where are they getting their money from? What my next step would be in developing the story would be to dive into Witkoff and White's job history and see if there is any insider trading happening behind the scenes that make up their own wealth and salary.
