@@ -8,7 +8,7 @@ Follow along with the demo to learn how to calculate crime rates using R and the
 
 ```{r}
 library(tidyverse)
-install.packages("janitor")
+#install.packages("janitor")
 library(janitor)
 ```
 
@@ -49,7 +49,7 @@ crimes_with_rates <- crimes |> mutate(violent_rate = violent_crime_total/populat
 Write a few sentences about what you found in the data. What years had the highest crime rates? What years had the lowest crime rates? Does the pattern match your expectations? What might explain some of the results you found?
 
 
-
+I found that the 90s had the highest crime rates in Maryland and I also found that the lowest crime rates were in the 70s. Due to the context of what was happening in the 90s, I would infer that the drug and crack cocaine sales contributed to the high crime. In that same regard, the 70s was right before the rise of cocaine therefore that may be why crime was lower.
 
 When you are done, save your work, switch to GitHub Desktop, then add, commit and push your changes to GitHub and submit the URL of the notebook in ELMS.
 
