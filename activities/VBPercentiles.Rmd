@@ -39,7 +39,7 @@ team_aces |> mutate(percentile = ntile(total_aces, 100))
 
 Write a couple of sentences that puts Maryland into context with the other teams in the dataset. You can do some Internet research to help with this.
 
-
+Based on the data, I would say that UMD is better than 95 percent of the other school and therefore is in the top 5 percent. However Creighton is better than UMD by having one more ace than UMD; still putting it in the 95 percentile. Merrimack is also in the 95 percentile but has one less ace than UMD. According to the Diamondback, UMD has made many efforts to improve its team in 2026 by improving offensice officiency which would be attributed to why UMD is doing so well.
 
 When you are done, save your work, switch to GitHub Desktop, then add, commit and push your changes to GitHub and submit the URL of the notebook in ELMS.
 
