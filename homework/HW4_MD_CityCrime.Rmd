@@ -61,3 +61,16 @@ While Baltimore had the highest violent crime rate in 2019, Worcester, Ocean Cit
 ### Task 9: Save Your Work and Put it on GitHub
 
 Save this notebook, then commit it to your local repository. Push the changes to your GitHub repository and submit the URL for this file in ELMS.
+
+### Task 10: Using the 2020 violent crime rate, calculate the percentiles using `ntile()`. Save the results to a new dataframe called `md_cities_percentiles`. How many cities are above the 90th percentile? Calculate the Interquartile Range of the 2020 violent crime rate using `summarize()` and R's `IQR()` function. The syntax is similar to how `mean()` works. Do the results change your best story idea from the previous assignment? Why or why not?
+
+```{r}
+md_cities_percentiles <- md_cities_change |> mutate(percentile = ntile(violent_rate_2020, 100))
+```
+
+- There are 10 cities above the 90th percentile
+
+```{r}
+md_cities_percentiles |> summarize( IQR(violent_rate_2020))
+```
+- The results do not change the story idea from the previous assignment because Worcester, Ocean City is still at the highest percentile for crime which was similar to the other results in the data above. Due to the fact that the population is so low compared to the other cities like Baltimore, I think the fact that Worcester has such a low population and such a high crime rate is still extremely interesting.
