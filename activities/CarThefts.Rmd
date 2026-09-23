@@ -33,9 +33,9 @@ car_thefts |> summarize(mean = mean(count), sd = sd(count))
 car_thefts |> 
   ggplot() + 
   geom_histogram(aes(x = count), binwidth = 2) +
-  geom_vline(aes(xintercept = mean(count)), color = "red", linetype = "dashed", size = 1) +
-  geom_vline(aes(xintercept = mean(count) - sd(count)), color = "blue", linetype = "dashed", size = 1) +
-  geom_vline(aes(xintercept = mean(count) + sd(count)), color = "blue", linetype = "dashed", size = 1)
+  geom_vline(aes(xintercept = mean(count)), color = "red", linetype = "dashed", linewidth = 1) +
+  geom_vline(aes(xintercept = mean(count) - sd(count)), color = "blue", linetype = "dashed", linewidth = 1) +
+  geom_vline(aes(xintercept = mean(count) + sd(count)), color = "blue", linetype = "dashed", linewidth = 1)
 ```
 
 
@@ -48,6 +48,8 @@ car_thefts |>
 
 Is the distribution normal or skewed in one direction? Write a sentence in which you describe the range of the data covered by one standard deviation from the mean on both sides - how much of the data falls in that range?
 
+- I think the distribution is normal because there is one central mean and it is relatively in the middle of the data. While it might skew a little to the left, I think most of the data is within range to be considered as normal.
 
+- I would say that on the left side, one standard deviation from the mean, the range is normal but on the right side the one standard deviation from the mean, the range is a little high.
 
 When you are done, save your work, switch to GitHub Desktop, then add, commit and push your changes to GitHub and submit the URL of the notebook in ELMS.
