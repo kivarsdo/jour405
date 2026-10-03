@@ -32,7 +32,7 @@ library(lubridate)  # For working with dates
 Load the accident data from our CSV file at https://raw.githubusercontent.com/dwillis/jour405/refs/heads/main/data/daily_accidents.csv into a dataframe called `accidents`:
 
 ```{r load-data}
-
+accidents <- read_csv("https://raw.githubusercontent.com/dwillis/jour405/refs/heads/main/data/daily_accidents.csv")
 ```
 
 ## Data Exploration
@@ -68,7 +68,7 @@ ggplot(accidents, aes(x = date, y = total)) +
 ### Task 2 (3 points)
 Looking at the time series visualization above, identify at least two noticeable patterns or anomalies. What questions would you want to investigate further based on this initial view of the data? How might these visual patterns translate into potential story angles?
 
-ANSWER HERE
+Two anomalies that I noticed include there being a starkly low amount iof car accidents in early 2020 and there being a particularly high amount of car accients in late 2021. From there, my questions would be what caused such a low amount of car accidents in 2020, though I would hypothesize that the drop is because of COVID, and why there was a small jump in 2021.
 
 The daily data is quite noisy, so let's also look at weekly patterns:
 
@@ -107,7 +107,7 @@ ggplot(accidents, aes(x = day_of_week, y = total)) +
 ### Task 3 (2 points)
 Based on the day-of-week analysis, which day(s) have the highest and lowest average accidents? Why might these patterns exist?
 
-ANSWER HERE
+Based on the day-of-week analysis, there are more average accidents on Fridays and the lowest amount of accidents usually fall on Mondays. My inference is that Mondays are usually reserved for people driving to work which is why there are less accidents, which could also be attributed to low energy. Fridays on the other hand, there are probably many people driving for travel for the weekend or just more anxious to get home therefore there are more accidents on Friday.
 
 ## Calculating Z-Scores
 
@@ -119,9 +119,9 @@ Now, using the accidents dataframe, add three columns using `mutate()`: mean_acc
 # Calculate z-scores for total accidents
 accidents <- accidents |>
   mutate(
-    mean_accidents = REPLACE_ME,
-    sd_accidents = REPLACE_ME,
-    z_score = (REPLACE_ME - REPLACE_ME) / REPLACE_ME
+    mean_accidents = mean(total),
+    sd_accidents = sd(total),
+    z_score = (total - mean_accidents) / sd_accidents
   )
 
 # Display the data with z-scores
@@ -156,7 +156,7 @@ unusual_days |>
 ### Task 5 (3 points)
 Choose one of the top 10 unusual days and research what might have happened on that date. Look for weather events, holidays, major incidents, or other factors that could explain the unusual number of accidents. Briefly describe your findings and how you would incorporate this context into a story.
 
-ANSWER HERE
+After researching why there were so many car accidents on October 29, 2021, Reuters as well as other news outlets attrubuted it to more reckless driving during the COVID pandemic and more drivers speeding due to less congestion on the roads. With this information I would incorporate the fact that the COVID pandemic influenced more people to drive recklessly due to not as many drivers being on the road.
 
 Let's visualize these unusual days:
 
@@ -186,9 +186,9 @@ Let's calculate z-scores that account for day of week patterns based on the same
 accidents <- accidents |>
   group_by(day_of_week) |>
   mutate(
-    dow_mean = REPLACE_ME,
-    dow_sd = REPLACE_ME,
-    dow_z_score = (REPLACE_ME - REPLACE_ME) / REPLACE_ME
+    dow_mean = mean(total),
+    dow_sd = sd(total),
+    dow_z_score = (total - dow_mean) / dow_sd
   ) |>
   ungroup()
 
@@ -207,7 +207,7 @@ unusual_dow |>
 ### Task 7 (3 points)
 Compare the days that have extreme z-scores overall versus those with extreme day-of-week z-scores. How do these lists differ? What journalistic insights can you draw from comparing these two different approaches to measuring "unusual" days?
 
-ANSWER HERE
+These lists differ a little in the way that you can now see the mean of the dow z-scores which can allow you to make the journalistic insight that Friday October 29, 2021 still had a very high level of accidents as the z-score is above 3 and Monday November 29, 2021 still had a record low of car accidents with a negative z-score above 3.
 
 Let's see how many unusual days we have for each day of the week:
 
@@ -286,7 +286,7 @@ unusual_monthly |>
 ### Task 8 (2 points)
 Based on the monthly pattern analysis, which months have the highest and lowest average accidents? Develop a hypothesis about why these seasonal patterns exist.
 
-ANSWER HERE
+From what I can tell, October has the highest level of car accidents and January has the lowest car accidents. I would hypothesize that October has so many car accidents because it encompasses a holiday that is known for going out at night and traveling at night meaning there might be more reckless driving at night during that month. Janurary, on the other hand, because there are so many people on the road, there is not as much of an opportunity for reckless driving and speeding.
 
 ## Identifying Extreme Outliers
 
@@ -311,9 +311,15 @@ if(nrow(extreme_outliers) > 0) {
 ### Task 9 (2 points)
 For the extreme outliers identified (z-scores beyond ±3), what do they have in common?
 
-ANSWER HERE
+For the extreme outliers, it seems that the days are in the weekend, excusing the Monday, which could contribute to the idea that there is more opportunity for reckless driving or more tendencies for reckless driving on the weekends.
 
 ## Your Best Story Pitch
 
 ### Task 10 (5 points)
 Based on all the analyses performed, craft your best story pitch, including a headline and lede. Be sure to include what kinds of sources/people you'd talk to for the story.
+
+October holds the most car accidents out of the whole year.
+
+After comparing all other months of the year in regards to car accidents, the fall month of October seems to reign as the highest outlier out of the whole year. Along with the fact that October happens to encompass the most car accidents, we also found that Fridays happen to have the most car accidents out of all the days of the week. 
+
+I would talk to the nearest police department and nearest medical unit to get their opinion on the matter since they would be the first responders to a car accident. 
