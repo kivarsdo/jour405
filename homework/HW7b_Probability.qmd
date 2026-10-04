@@ -9,6 +9,8 @@ In this assignment, you'll build on your z-score skills to answer probability qu
 Load the tidyverse and the White House salaries data from https://raw.githubusercontent.com/dwillis/jour405/refs/heads/main/data/white_house_salaries_2025.csv into a dataframe called `wh_salaries`
 
 ```{r}
+library(tidyverse)
+wh_salaries <- read_csv("https://raw.githubusercontent.com/dwillis/jour405/refs/heads/main/data/white_house_salaries_2025.csv")
 ```
 
 ### Task 2: Filter and summarize (2 points)
@@ -18,19 +20,30 @@ You may remember from HW3 that some White House staffers have a salary of $0. Le
 ```{r}
 wh_paid <- wh_salaries |>
   filter(SALARY > 0)
+wh_paid <- wh_paid |>
+  mutate(
+    mean(SALARY),
+    sd(SALARY),
+    median(SALARY)
+  )
 
-
-
+#Median: 101500, sd: 40342.7, mean: 111321.7
 ```
 
 Now create a histogram of the paid salaries with a vertical line for the mean and two more for ±1 standard deviation, similar to what you did in HW6 with Spotify data.
 
 ```{r}
+wh_paid |> 
+  ggplot() + 
+  geom_histogram(aes(x = SALARY), binwidth = 11000) +
+  geom_vline(aes(xintercept = mean(SALARY)), color = "red", linetype = "dashed", linewidth = 1) +
+  geom_vline(aes(xintercept = mean(SALARY) - sd(SALARY)), color = "blue", linetype = "dashed", linewidth = 1) +
+  geom_vline(aes(xintercept = mean(SALARY) + sd(SALARY)), color = "blue", linetype = "dashed", linewidth = 1)
 ```
 
 **Describe the shape of the distribution. Is it roughly normal? Skewed? Where do most salaries cluster?**
 
-ANSWER HERE
+The distribution is right skewed as the tail is on the right and most of the salaries are clustered to the left of the distribution. 
 
 ### Task 3: The Empirical Rule (3 points)
 
@@ -64,7 +77,7 @@ empirical
 
 **How closely does the data follow the empirical rule? What does any deviation tell you about the distribution?**
 
-ANSWER HERE
+The data follows the empirical rule closely as it is not very far from the 68, 95, 99.7 rule with 65.9, 91.2, 100. The deviation is telling me how far away the deviations are from the mean.
 
 ### Task 4: From z-scores to probability with pnorm() (4 points)
 
@@ -102,7 +115,7 @@ actual_prob
 
 **Write a sentence describing this probability in plain English. How does the normal approximation (prob_less) compare to the actual percentage?**
 
-ANSWER HERE
+Based on the calculations above, you can see that the probability of employees in the white house earning more than $150,000 is between 16 to 18 percent.
 
 ### Task 5: Probability between two values (3 points)
 
@@ -112,21 +125,21 @@ You'll need to calculate z-scores for those two figures, use `pnorm()` for each,
 
 ```{r}
 
-z_lower <- (REPLACE_ME - mean_sal) / sd_sal
-z_upper <- (REPLACE_ME - mean_sal) / sd_sal
+z_lower <- (salary - mean_sal) / sd_sal
+z_upper <- (salary - mean_sal) / sd_sal
 
 prob_between <- pnorm(z_upper) - pnorm(z_lower)
 prob_between
 
 # Verify with actual data
-actual_between <- sum(wh_paid$SALARY >= REPLACE_ME & wh_paid$SALARY <= REPLACE_ME) / total_n
+actual_between <- sum(wh_paid$SALARY >= 80000 & wh_paid$SALARY <= 120000) / total_n
 actual_between
 
 ```
 
 **Interpret this result. What does this "middle range" tell us about the White House salary structure?**
 
-ANSWER HERE
+From these calculations you can see that about 33% of employees at the white house are making between $80,000 and $120,000. 
 
 ### Task 6: Expected vs. observed (3 points)
 
@@ -158,7 +171,7 @@ bins |> select(category, expected_count, observed_count, difference)
 
 **Where does reality differ most from what the normal distribution predicts? What might explain those differences?**
 
-ANSWER HERE
+The normal distribution is different from reality possibly because the outliers were removed from the distribution in the beginning.
 
 ### Task 7: Story pitch (4 points)
 
@@ -166,7 +179,11 @@ Based on your probability analysis, write a headline and lede for a story about 
 
 Then write 2-3 sentences describing how you would use probability thinking to advance this story — what could you compare these probabilities to, and what additional analysis would help?
 
-ANSWER HERE
+About 33 percent of White House employees are making between $80k and $150k.
+
+After doing extensive research using the reported salaries of White House employees in the current administration, we found that only 2 employees make below $60k and that at least 113 employees make $90k and $120k. 
+
+In order to advance this story I would use probability to compare to the first administration under Trump in 2016 and the white house salaries from then. I would also compare the two Trump administration salaries to the white house salaries under Biden.
 
 ### Task 8: Save Your Work and Put it on GitHub
 
