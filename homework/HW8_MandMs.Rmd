@@ -5,27 +5,48 @@ title: "HW8_MandMs"
 In this assignment, you'll be picking up where you left off with the M&Ms activity. You'll load the data and perform some basic statistical analysis. Follow the steps below to complete the assignment.
 
 ### Task 1: Load the tidyverse
+```{r}
+library(tidyverse)
+```
 
 
 ### Task 2: Load the M&Ms dataset from https://raw.githubusercontent.com/dwillis/jour405/refs/heads/main/data/mandms.csv
 
+```{r}
+mandms <- read_csv("https://raw.githubusercontent.com/dwillis/jour405/refs/heads/main/data/mandms.csv")
+```
 
 ### Task 3: Sample 5 rows of data from the dataset
+```{r}
+set.seed(42)
+sample_5 <- mandms |> sample_n(5)
+```
 
 
-### Task 4: Calculate the mean age and standard deviation of the sample, using either the red or black number of M&Ms
+### Task 4: Calculate the mean and standard deviation of the sample, using either the red or black number of M&Ms
+```{r}
+mean(sample_5$black)
+sd(sample_5$black)
+```
 
 
-### Task 5: Calculate the mean age and standard deviation of the population, using the same measure as in Task 4
+### Task 5: Calculate the mean and standard deviation of the population, using the same measure as in Task 4
 
+```{r}
+mean(mandms$black)
+sd(mandms$black)
+```
 
 ### Task 6: Compare the sample and population statistics
 
 Compare the two sets of means and standard deviations. Are they similar?
 
+The two sets are slightly similar due to the fact that the mean of the sample is 80.2 and the mean of the population is 73.28. The standard deviation is similar in the same way as the sample standard deviation is 9.8 and the standard deviation of the population is 15.7.
+
 ### Task 7: Describe the results
 
 Write a few sentences about what you found in the data. What does this tell you about the M&Ms dataset and about the act of random sampling?
 
+What I found in the data was that while the averages of the data are slightly similar when comparing the sample and the population, they are not extremely close. Therefore I can conclude that random sampling continues to be a not exactly ideal when sampling such a large population as it is not extremely accurate.
 
 When finished, save your work, switch to GitHub Desktop, then add, commit and push your changes to GitHub and submit the URL of the notebook in ELMS.
