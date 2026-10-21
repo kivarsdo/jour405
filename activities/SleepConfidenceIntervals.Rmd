@@ -41,7 +41,7 @@ sleep_stats
 
 **Answer this question:** Based on these numbers alone, what would you tell the health reporter? Why might it be risky to report the average as the definitive answer for all students?
 
-ANSWER HERE
+What I would tell the health reporter is that the answer could be yes as the average is about 7.7 and the standard deviation is not that far off from the mean. However I would also tell them that because the sample size is quite small in comparison to the school, it would be risky to say that all students are getting enough sleep because we don't know that definitively. 
 
 ### Task 3: Calculate the standard error
 
@@ -58,7 +58,7 @@ sleep_stats
 
 **Answer this question:** The standard error is much smaller than the standard deviation. Why? What does each one measure?
 
-ANSWER HERE
+The standard error is how much we expect the sample mean to vary from the population mean which in this case is much smaller than the standard deviation which uses the sample. I assume that the standard error is smaller than the standard deviation because the sample mean is not too far off from the population mean.
 
 ### Task 4: Calculate a 95% confidence interval
 
@@ -112,7 +112,7 @@ ggplot(sleep_data, aes(x = hours)) +
 
 **Answer this question:** Look at the chart. Notice that the confidence interval is much narrower than the spread of individual data points. Why? What's the difference between the variation in individual sleep hours and the uncertainty about the average?
 
-ANSWER HERE
+The confidence interval is narrower than the spread of individual data points because the mean is at about 7.73 and the difference between variation individual sleep hours and the sleep hours is that the individual sleep hours are more spread out and the uncertainty about the average is more of a low number because it is close to the population mean.
 
 ### Task 6: The CDC question — is 7 hours within the interval?
 
@@ -134,7 +134,7 @@ sleep_stats |>
   b) "Students May Not Be Getting Enough Sleep, Survey Suggests"
   c) "Survey: Students Getting Recommended Amount of Sleep"
 
-ANSWER HERE
+C is the best headline because roughly, students are getting the recommended amount of sleep and that is pretty much all we can say because we aren't confident in the rest of the headlines.
 
 ### Task 7: What about a bigger sample?
 
