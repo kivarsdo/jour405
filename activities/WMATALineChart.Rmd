@@ -58,4 +58,4 @@ weekly_wmata |>
 
 **Answer this question:** Describe the trend you see. Is ridership going up, down, or staying flat? What are the big dips, and what might explain them? What would you want to know before writing a story about Metro weekly ridership trends?
 
-ANSWER HERE
+From what I can see, the trend was the highest in about March of 2025 but there was a big dip in January 2026 which then evened out after but not to the highest point that it used to be back in March the year before. I'm not exactly sure why there was a gap but I'm assuming it had something to do with the fact that prices of the rides have been increasing which could be an incentive not to ride the metro for people who used it frequently at a lower price.
