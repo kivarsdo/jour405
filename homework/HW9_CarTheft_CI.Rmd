@@ -169,7 +169,7 @@ Car thefts are down to about 370 per month.
 
 In Prince George's County there are about 370 car thefts on average per month, give or take about 32. With the fact that there is such a low sample size with only 32 months in the sample, we can infer that the average rate of car thefts is between 341 to 409 per month. 
 
-I would tell me editor that car thefts are ultimately going down compared to last year, however what I would need to answer the question more definitively is more months and more data from the past.
+I would tell the editor that car thefts are ultimately going down compared to last year, however what I would need to answer the question more definitively is more months and more data from the past.
 
 
 When you are finished, save your work, switch to GitHub Desktop, then add, commit and push your changes to GitHub and submit the URL of the notebook in ELMS.
