@@ -1,0 +1,16 @@
+```{r}
+library(tidyverse)
+project_final_data <- read_csv("")
+```
+Here is the link to the spreadsheet because I could not get it to work through R https://nces.ed.gov/ipeds/Search?query=women%20degrees%20by%20field&query2=women%20degrees%20by%20field&resultType=all&page=1&sortBy=relevance&overlayTableId=8506 
+
+From what is looks like to me California has the most degrees in total for women out of any other state. 
+
+What does it contain and what time period does it cover? 
+- The data contains different types of degrees and the different states' individual totals.
+Which columns will be most important for your analysis? 
+- The state columns and the different types of degree totals are the most important for my analysis.
+What's missing that you might need or want? 
+- What is missing is the different fields that the degrees were given from.
+What questions do you have about it or need help answering?
+- What questions I have is how to convert the spreadsheet into R and whether knowing the differnent type of majors for the degrees is important.
