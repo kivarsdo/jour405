@@ -234,6 +234,7 @@ kable(comparison, digits = 1, caption = "Difference Between Weighted and Unweigh
 
 1. Which voter category shows the biggest difference between weighted and unweighted results?
 - The voter categroy that shows the biggest difference between weighted and unweighted is the rarely/never category which has a difference of -3.6 difference in yes. 
+- 
 
 2. How might these differences affect reporting on likely voter turnout?
 - These differences could affect reporting on likely voter turnout because we will likely see the biggest switch in voters who usually never vote, will now vote based on this data.

@@ -30,7 +30,10 @@ What stands out to me about this data is the fact that the highest salary is 197
 Write code to calculate the mean and median of the salaries in the dataset using the `summarize()` function. You don't need to make a new dataframe, just display the results.
 
 ```{r}
-wh_salaries |> summarize((mean_salary=mean(wh_salaries)(median_salary=median(wh_salaries)))
+wh_salaries |> 
+  summarize(mean_salary = mean(SALARY)
+                               median_salary = median(SALARY)
+                               )
           
 ```
 
