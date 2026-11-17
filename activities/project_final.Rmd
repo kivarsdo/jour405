@@ -1,8 +1,23 @@
 ```{r}
 library(tidyverse)
-project_final_data <- read_csv("")
+project_final_data <- read_csv("https://raw.githubusercontent.com/dwillis/jour405/refs/heads/main/data/women_by_area_all_years.csv")
 ```
-Here is the link to the spreadsheet because I could not get it to work through R https://nces.ed.gov/ipeds/Search?query=women%20degrees%20by%20field&query2=women%20degrees%20by%20field&resultType=all&page=1&sortBy=relevance&overlayTableId=8506 
+Update 11/16/2026
+- From this data I think I am going to shift my focus to asking the question 'What fields are women receiving more college degrees than men and has that changed over time?"
+
+- In regards to tests using the data I would include the following analyses:
+
+- I'm not quite sure how I would do it but using the women_degrees column, total_degrees column and the broad_area_title I would find what fields women are receiving more degrees than men in order to get a better look at what fields of study, overall, have more women receiving that degree than men. 
+
+- I might also use a linear regression model to compare the year vs. the total of degrees received by women in each field of study in order to get a better idea of if there are some fields that have more or less women receiving degrees over time.
+
+- I also think that a histogram might help to visualize the number of degrees earned by women and the different fields of study to get a better idea of, overall, how close the different fields are to each other in terms of degrees earned by women.
+
+
+
+
+
+------------------------------------------------------------------------------------------------------
 
 From what is looks like to me California has the most degrees in total for women out of any other state. 
 
