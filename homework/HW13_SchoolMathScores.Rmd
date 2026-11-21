@@ -1,6 +1,6 @@
 ---
 title: "Identifying Schools with Biggest Differences in Math Test Scores, Part 2"
-author: "YOUR NAME"
+author: "Kira Ivarsdottir"
 ---
 
 ```{r}
@@ -30,7 +30,7 @@ schools |> arrange(desc(`FARMS Pct`)) |> head(10)
 
 Are there any data quality issues like the ones you found in the Pennsylvania data? How does the distribution of FARMS percentages compare between the two counties? Note anything that concerns you or gives you confidence in the data.
 
-ANSWER HERE
+Immediately I noticed that there are no schools with 100% FARMS students which gives me a little more confidence in the data. What I also notice is that there also seems to be no correlation from the schools with FARMS and higher math expectations because this data has lower math expectations as the FARMS percentage rises.
 
 
 ### Task 2: Create a Scatterplot and Compare (5 points)
@@ -39,7 +39,7 @@ Replace the REPLACE_ME value with the correct variable name to create a scatterp
 
 ```{r}
 schools |>
-  ggplot(aes(x = `REPLACE_ME`, y = `% Met or Exceeded Math Expectations`)) +
+  ggplot(aes(x = `FARMS Pct`, y = `% Met or Exceeded Math Expectations`)) +
   geom_point() +
   geom_smooth(method = "lm", se = FALSE, color = "red") +
   labs(x = "FARMS Percentage", y = "% Met or Exceeded Math Expectations",
@@ -48,7 +48,7 @@ schools |>
 
 Describe what you see. Then compare this scatterplot specifically to the Pennsylvania one: what differences do you notice in the direction, strength, and spread of the relationship? The two counties share a name and are both suburban — what might explain why they look so different?
 
-ANSWER HERE
+The difference that I see in comparison to this scatterplot and the Pennsylvania is that there actually seems to be loose correlation compared to no correlation. In this case the direction seems to be negative, meaning supposedly the more FARMS the lower the scores. While there are definitely some outliers, the strength of the correlation is higher and spread of the data is a lot more contained to the line of best fit. What explains why they might look so different is because the data seems to be more reliable due to the fact that there are less inconsistencies and not as many 100% FARMS.
 
 
 ### Task 3: Linear Regression Model (5 points)
@@ -56,13 +56,13 @@ ANSWER HERE
 Replace the REPLACE_ME value with the correct variable name to run a linear regression model predicting math scores from FARMS percentage.
 
 ```{r}
-model <- lm(`REPLACE_ME` ~ `FARMS Pct`, data = schools)
+model <- lm(`% Met or Exceeded Math Expectations` ~ `FARMS Pct`, data = schools)
 summary(model)
 ```
 
 Report the three key statistics: the p-value, the Adjusted R-squared, and the coefficient for FARMS Pct. Then interpret them together — not separately. What does the combination of these three numbers tell you about the relationship between poverty and math scores in Montgomery County, Md.? Is this model worth using? How does it compare to the Pennsylvania model?
 
-ANSWER HERE
+The p-value is 0.00000000000000022, the Adjusted R-squared is 0.6734 and the coefficient is 0.0000000000000002. The combination of these three numbers tell me about the relationship between poverty and math scores in Montgomery County Md is that the results could be statistically significant because the p-value is less than 0.05 and the adjusted R-squared is 0.67. Because of this, I think we can use is and it is worth using this model compared to the Pennsylvania model.
 
 
 ### Task 4: Identifying Schools with the Biggest Residuals (6 points)
@@ -72,9 +72,9 @@ Replace the REPLACE_ME values with the correct variable names to calculate predi
 ```{r}
 schools <- schools |>
   mutate(
-    predicted = predict(REPLACE_ME),
+    predicted = predict(model),
     residual = `% Met or Exceeded Math Expectations` - predicted,
-    abs_residual = abs(REPLACE_ME)
+    abs_residual = abs(residual)
   ) |>
   arrange(desc(abs_residual))
 
@@ -88,7 +88,16 @@ For each of the two schools, answer:
 - Does anything in that profile help explain why the school is over- or under-performing the model?
 - What would your first reporting question be to the principal of that school?
 
-ANSWER HERE
+Fox Chapel Elementary
+- Majority black community and a median household income of a little less than the median amount of the DMV area.
+- They have an 88.6% of people with a high school degree or higher which might contribute to a value in education
+- My first question is how much funding does the school get and what programs are being put into place to influence good math expectations?
+
+Germantwon Elementary
+- Has 27% Black people and 26% white people which is different than Fox Chapel and median household income is higher than average amount in Maryland.
+- The household income is less than Fox Chapel which may contribute to a reduced ability to pay for tutoring and schooling
+- My first question would be why is the school underperforming to such a large degree and could that be attributed to a reduced household income?
+
 
 
 ### Task 5: Evaluate the Model and Write the Pitch (7 points)
@@ -97,4 +106,4 @@ You've now run this analysis on two counties. Return to the school board member'
 
 Write a short story pitch of 4-6 sentences that addresses all of the following: Does the Maryland data support or contradict the claim? How does it compare to what you found in Pennsylvania? What would you ask the school board member if you called them for comment? And what's the most interesting specific finding from your residuals analysis: which school would you want to visit first, and why?
 
-ANSWER HERE
+The Maryland data does support the claim that schools with less students on FARMS lunches. do better on standardized tests. This compares to Pennsylvania in the way that the model for this data is much better and easier to understand that there is a negative correlation between schools with more FARMS and better test scores. I would ask the school board member of Fox Chapel how much school funding they are receiving to have such a high score despite their lower predictability. I would want to visit Fox Chapel first because they have a much higher score than predicted and no obvious reasons as to why they are so high.
